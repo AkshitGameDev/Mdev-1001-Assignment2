@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Debug;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
@@ -19,9 +20,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABEL_NAME = "MOVIES";
     private static final String COLUMN_ID = "_id";
 
-    private static final String TITLE = "";
-    private static final String STUDIO = "";
-    private static final String GENRE = "";
+    private static final String TITLE = "title";
+    private static final String STUDIO = "studio";
+    private static final String GENRE = "genre";
 
 
 
@@ -59,5 +60,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    Cursor readAllData (){
+        String querry = "SELECT * FROM" + TABEL_NAME;
+        SQLiteDatabase db  = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if( db != null ){
+            cursor = db.rawQuery(querry, null);
+        }
+        return cursor;
+    }
 
 }

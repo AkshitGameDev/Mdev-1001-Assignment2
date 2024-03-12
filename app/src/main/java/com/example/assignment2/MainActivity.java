@@ -9,6 +9,8 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
@@ -17,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MyDatabaseHelper myDB;
+        ArrayList<String> movie_id, movie_title, movie_studio, movie_genre;
+
 
         recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.add_button);
@@ -27,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        myDB = new MyDatabaseHelper(MainActivity.this)
+        movie_id = new ArrayList<>();
+        movie_title = new ArrayList<>();
+        movie_studio = new ArrayList<>();
+        movie_genre = new ArrayList<>();
     }
 
 
