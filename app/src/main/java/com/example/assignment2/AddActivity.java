@@ -19,7 +19,7 @@ public class AddActivity extends AppCompatActivity {
 
         title_input = findViewById(R.id.title_input);
         studio = findViewById(R.id.studio);
-        genre = findViewById(R.id.genre);
+        genre = findViewById(R.id.movie_genre_txt);
         add_button = findViewById(R.id.add_button);
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
