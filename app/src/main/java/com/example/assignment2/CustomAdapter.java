@@ -1,5 +1,6 @@
 package com.example.assignment2;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,16 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
-    private Activity activity;
     private ArrayList movie_id, movie_title, movie_studio, movie_genre;
     CustomAdapter(Context context, ArrayList movie_id, ArrayList movie_title, ArrayList movie_studio, ArrayList movie_genre){
         this.context = context;

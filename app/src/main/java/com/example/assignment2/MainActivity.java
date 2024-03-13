@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.add_button);
         add_button.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +49,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
 
-        void storeDataInArrays (){
+    void storeDataInArrays (){
+        Cursor cursor = myDB.readAllData();
+        if(cursor.getCount() == 0){
+            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+        } else {
+            while (cursor.moveToNext()) {
+                movie_id.add(cursor.getString(0));
+                movie_title.add(cursor.getString(1));
+                movie_studio.add(cursor.getString(2));
+                movie_genre.add(cursor.getString(3));
+            }
+        }
+    }
+        /* void storeDataInArrays (){
             Cursor cursor = myDB.readAllData();
             if(cursor.getCount() == 0){
                 Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
@@ -62,6 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 movie_studio.add(cursor.getString(2));
                 movie_genre.add(cursor.getString(3));
             }
-        }
+        }*/
 
 }
