@@ -1,12 +1,17 @@
 package com.example.assignment2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -62,16 +67,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-        /* void storeDataInArrays (){
-            Cursor cursor = myDB.readAllData();
-            if(cursor.getCount() == 0){
-                Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
-            }else {
-                movie_id.add(cursor.getString(0));
-                movie_title.add(cursor.getString(1));
-                movie_studio.add(cursor.getString(2));
-                movie_genre.add(cursor.getString(3));
-            }
-        }*/
 
 }
