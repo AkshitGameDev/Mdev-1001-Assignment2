@@ -1,13 +1,10 @@
 package com.example.assignment2;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,8 +50,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             movie_id_txt = itemView.findViewById(R.id.movie_id_text);
             movie_title_txt = itemView.findViewById(R.id.movie_title_txt);
             movie_studio_txt = itemView.findViewById(R.id.movie_studio_txt);
-            movie_genre_txt = itemView.findViewById(R.id.movie_genre_txt);
+            movie_genre_txt = itemView.findViewById(R.id.movie_genre_txt2);
         }
 
     }
+
+
 }

@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/movie_title_txt" />
 
             <TextView
-                android:id="@+id/movie_genre_txt"
+                android:id="@+id/movie_genre_txt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
