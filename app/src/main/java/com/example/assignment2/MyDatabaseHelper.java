@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
-
     //singelton
     public static MyDatabaseHelper instance = null;
     private Context context;
@@ -23,9 +22,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String TITLE = "title";
     private static final String STUDIO = "studio";
     private static final String GENRE = "genre";
-
-
-
     MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
@@ -39,7 +35,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 GENRE + " TEXT);";
         db.execSQL(query);
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABEL_NAME + ";");
@@ -61,7 +56,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     Cursor readAllData (){
-        String querry = "SELECT * FROM" + TABEL_NAME;
+        String querry = "SELECT * FROM " + TABEL_NAME +";";
         SQLiteDatabase db  = this.getReadableDatabase();
 
         Cursor cursor = null;
@@ -70,5 +65,32 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+    void updateData(String row_id, String title, String author, String pages){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(TITLE, title);
+        cv.put(STUDIO, author);
+        cv.put(GENRE, pages);
 
+        long result = db.update(TABEL_NAME, cv, "_id=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    void deleteOneRow(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABEL_NAME, "_id=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void deleteAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABEL_NAME);
+    }
 }
